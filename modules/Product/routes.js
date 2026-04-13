@@ -11,7 +11,7 @@ getAllProducts,
 getProductsById,
 deleteProducts,
 updateProducts,
-getProductById,
+getProductVendorById,
 getProductsByVendorId,
 getProductsByCategoryId
 
@@ -43,7 +43,8 @@ getProductsByCategoryId
 
 
 
-  routesProduct.get('/product/:id',getProductById)
+
+  routesProduct.get('/product/:id',getProductVendorById)
 
 
 

@@ -196,7 +196,7 @@ res.send({message:'you have error',error:err})
 
 
 
-const getProductById= async(req,res)=>{
+const getProductVendorById= async(req,res)=>{
   await product.findByPk(req.params.id,{
 
 include: [{
@@ -230,7 +230,7 @@ getAllProducts,
 getProductsById,
 deleteProducts,
 updateProducts,
-getProductById,
+getProductVendorById,
 getProductsByVendorId,
 getProductsByCategoryId
 

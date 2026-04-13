@@ -6,9 +6,9 @@
     await category.create(req.body).then((data)=>{
   
     res.send({message:'success',data:data})
-    }).catch((err)=>{
+    }).catch(()=>{
   
-  res.send({message:'The category already exists',err:err})
+  res.send({message:'The category already exists'})
   
     })
   
