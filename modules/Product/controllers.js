@@ -25,7 +25,7 @@ import { category } from '../../db/Category_Model.js'
 
 if (findVendorId==null || CategoryIdId==null){
     res.send({message:'vendor and category is not found'})
-    return
+    return;
 }
 
   await product.create(req.body).then((data)=>{
@@ -156,6 +156,7 @@ res.send({message:'you have error',error:err})
  }).then((data)=>{
  if (data==0){
      res.send({message:'product is not found'})
+       return;
  }  
  res.send("deleted success")
  

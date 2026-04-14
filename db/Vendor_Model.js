@@ -21,7 +21,7 @@ unique:true
 },
 
 phone :{
-type:DataTypes.INTEGER,
+type:DataTypes.STRING,
 
 },
 address :{

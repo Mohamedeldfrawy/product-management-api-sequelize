@@ -81,6 +81,7 @@
   }).then((data)=>{
   if (data==0){
       res.send({message:'category is not found'})
+        return;
   }  
   res.send("deleted success")
   

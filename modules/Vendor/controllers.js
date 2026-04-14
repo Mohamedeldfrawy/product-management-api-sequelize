@@ -4,36 +4,66 @@
 
 
 
+
+
+// past code
+
 export const createVendor = async(req,res)=>{
 
-  await vendor.create(req.body,{
+  if (req.body.name ==null || req.body.name.length ==0){
+      return   res.status(400).send({message:'name is null '})
+         
+    } 
 
-}).then((data)=>{
+  
+try{
+  const data= await vendor.create(req.body)
+ return res.status(201).json({
+      message: 'success',
+      data: data
+    });
+}catch(err){
 
-  res.send({message:'success',data:data})
-  }).catch((err)=>{
 
-
-    if (req.body.name ==null || req.body.name.length ==0){
-         res.send({message:'name is null '})
-         return
+     if (err.fields){
+      return res.status(400).json({message:'Email already exists'})
+   
     }
-     else if (err.fields){
-      res.send({message:'Email already exists'})
+    
+      return    res.status(500).json({message: 'server error'})
+
+
+}
+}
+
+
+// export const createVendor = async(req,res)=>{
+
+//   await vendor.create(req.body,{
+
+// }).then((data)=>{
+
+//   res.send({message:'success',data:data})
+//   }).catch((err)=>{
+
+
+//     if (req.body.name ==null || req.body.name.length ==0){
+//          res.send({message:'name is null '})
+//          return
+//     }
+//      else if (err.fields){
+//       res.send({message:'Email already exists'})
      
       
 
       
    
-    }
+//     }
     
    
 
-})
-}
-
-
-
+// })
+// }
 
 
 
@@ -69,7 +99,7 @@ export const createVendor = async(req,res)=>{
    }}).then((data)=>{
      if (data==null){
           res.send({message:'vendor is not found'})
- 
+             return;
      }
  
    res.send({message:'success',data:data})
@@ -145,7 +175,7 @@ id: req.params.id
 
 }).then((data)=>{
 if (data==0){
-    res.send({message:'vendor is not found'})
+    return  res.send({message:'vendor is not found'})
 }  
 res.send({message:'deleted success'})
 }).catch((err)=>{
